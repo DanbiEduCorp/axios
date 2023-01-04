@@ -8,9 +8,9 @@ describe('instance', function () {
   });
 
   it('should have the same methods as default instance', function () {
-    var instance = axios.create();
+    const instance = axios.create();
 
-    for (var prop in axios) {
+    for (const prop in axios) {
       if ([
         'Axios',
         'AxiosError',
@@ -23,8 +23,14 @@ describe('instance', function () {
         'spread',
         'getUri',
         'isAxiosError',
+        'mergeConfig',
         'VERSION',
-        'default'].indexOf(prop) > -1) {
+        'default',
+        'toFormData',
+        'formToJSON',
+        'AxiosHeaders',
+        'HttpStatusCode'
+      ].indexOf(prop) > -1) {
         continue;
       }
       expect(typeof instance[prop]).toBe(typeof axios[prop]);
@@ -32,7 +38,7 @@ describe('instance', function () {
   });
 
   it('should make an http request without verb helper', function (done) {
-    var instance = axios.create();
+    const instance = axios.create();
 
     instance('/foo');
 
@@ -43,7 +49,7 @@ describe('instance', function () {
   });
 
   it('should make an http request with url instead of baseURL', function (done) {
-    var instance = axios.create({
+    const instance = axios.create({
       url: 'https://api.example.com'
     });
 
@@ -56,7 +62,7 @@ describe('instance', function () {
   });
 
   it('should make an http request', function (done) {
-    var instance = axios.create();
+    const instance = axios.create();
 
     instance.get('/foo');
 
@@ -67,7 +73,7 @@ describe('instance', function () {
   });
 
   it('should use instance options', function (done) {
-    var instance = axios.create({ timeout: 1000 });
+    const instance = axios.create({ timeout: 1000 });
 
     instance.get('/foo');
 
@@ -78,7 +84,7 @@ describe('instance', function () {
   });
 
   it('should have defaults.headers', function () {
-    var instance = axios.create({
+    const instance = axios.create({
       baseURL: 'https://api.example.com'
     });
 
@@ -92,13 +98,13 @@ describe('instance', function () {
       return config;
     });
 
-    var instance = axios.create();
+    const instance = axios.create();
     instance.interceptors.request.use(function (config) {
       config.bar = true;
       return config;
     });
 
-    var response;
+    let response;
     instance.get('/foo').then(function (res) {
       response = res;
     });
@@ -117,10 +123,10 @@ describe('instance', function () {
   });
 
   it('should have getUri on the instance', function() {
-    var instance = axios.create({
+    const instance = axios.create({
       baseURL: 'https://api.example.com'
     });
-    var options = {
+    const options = {
       url: 'foo/bar',
       params: {
         name: 'axios'
@@ -130,8 +136,8 @@ describe('instance', function () {
   });
 
   it('should correctly build url without baseURL', function () {
-    var instance = axios.create();
-    var options = {
+    const instance = axios.create();
+    const options = {
       url: 'foo/bar?foo=bar',
       params: {
         name: 'axios'
@@ -141,8 +147,8 @@ describe('instance', function () {
   });
 
   it('should correctly discard url hash mark', function () {
-    var instance = axios.create();
-    var options = {
+    const instance = axios.create();
+    const options = {
       baseURL: 'https://api.example.com',
       url: 'foo/bar?foo=bar#hash',
       params: {
