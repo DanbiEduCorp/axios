@@ -1,4 +1,4 @@
-// Axios v1.2.2 Copyright (c) 2022 Matt Zabriskie and contributors
+// Axios v1.2.2 Copyright (c) 2023 Matt Zabriskie and contributors
 'use strict';
 
 const FormData$1 = require('form-data');
@@ -2845,8 +2845,17 @@ const cookies = platform.isStandardBrowserEnv ?
       },
 
       read: function read(name) {
-        const match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
+        const matches = document.cookie.matchAll(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)', 'g'));
+        let match;
+        let value;
+        do {
+          match = matches.next();
+          if (match.value) {
+            value = match.value;
+          }
+        } while (!match.done);
+
+        return (value ? decodeURIComponent(value[3]) : null);
       },
 
       remove: function remove(name) {
