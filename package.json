@@ -1,5 +1,5 @@
 {
-  "name": "axios",
+  "name": "@DanbiEduCorp/axios",
   "version": "0.26.0",
   "description": "Promise based HTTP client for the browser and node.js",
   "main": "index.js",
@@ -17,7 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/axios/axios.git"
+    "url": "git+ssh://git@github.com/DanbiEduCorp/axios.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "xhr",
@@ -26,12 +29,11 @@
     "promise",
     "node"
   ],
-  "author": "Matt Zabriskie",
+  "author": "DanbiEduCorp",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/axios/axios/issues"
+    "url": "https://github.com/DanbiEduCorp/axios/issues"
   },
-  "homepage": "https://axios-http.com",
   "devDependencies": {
     "abortcontroller-polyfill": "^1.5.0",
     "coveralls": "^3.0.0",
