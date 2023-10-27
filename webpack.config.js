@@ -1,5 +1,3 @@
-const TerserPlugin = require('terser-webpack-plugin');
-var webpack = require('webpack');
 var config = {};
 
 function generateConfig(name) {
@@ -14,9 +12,7 @@ function generateConfig(name) {
       libraryTarget: 'umd',
       globalObject: 'this'
     },
-    node: {
-      process: false
-    },
+    node: false,
     devtool: 'source-map',
     mode: compress ? 'production' : 'development'
   };
