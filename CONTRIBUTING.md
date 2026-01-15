@@ -1,6 +1,6 @@
 # Contributing
 
-We are open to, and grateful for, any contributions made by the community. By contributing to axios, you agree to abide by the [code of conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md).
+We are open to, and grateful for, any contributions made by the community. By contributing to axios, you agree to abide by the [code of conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md).
 
 ## Code Style
 
@@ -11,9 +11,15 @@ Please follow the [node style guide](https://github.com/felixge/node-style-guide
 Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Testing
+<<<<<<< HEAD
 
 Please update the tests to reflect your code changes. Pull requests will not be accepted if they are failing on GitHub actions.
 
+=======
+
+Please update the tests to reflect your code changes. Pull requests will not be accepted if they are failing on [Travis CI](https://travis-ci.org/axios/axios).
+
+>>>>>>> upstream/main
 ## Documentation
 
 Please update the [docs](README.md) accordingly so that there are no discrepancies between the API and the documentation.
@@ -26,6 +32,16 @@ Please update the [docs](README.md) accordingly so that there are no discrepanci
 
 Please don't include changes to `dist/` in your pull request. This should only be updated when releasing a new version.
 
+<<<<<<< HEAD
+=======
+## Releasing
+
+Releasing a new version is mostly automated. For now the [CHANGELOG](https://github.com/axios/axios/blob/main/CHANGELOG.md) requires being updated manually. Once this has been done run the commands below. Versions should follow [semantic versioning](http://semver.org/).
+
+- `npm version <newversion> -m "Releasing %s"`
+- `npm publish`
+
+>>>>>>> upstream/main
 ## Running Examples
 
 Examples are included in part to allow manual testing.

@@ -573,7 +573,11 @@ describe('interceptors', function () {
   });
 
   it('should clear all request interceptors', function () {
+<<<<<<< HEAD
     const instance = axios.create({
+=======
+    var instance = axios.create({
+>>>>>>> upstream/main
       baseURL: 'http://test.com/'
     });
 
@@ -587,7 +591,11 @@ describe('interceptors', function () {
   });
 
   it('should clear all response interceptors', function () {
+<<<<<<< HEAD
     const instance = axios.create({
+=======
+    var instance = axios.create({
+>>>>>>> upstream/main
       baseURL: 'http://test.com/'
     });
 
