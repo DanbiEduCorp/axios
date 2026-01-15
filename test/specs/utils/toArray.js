@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import utils from '../../../lib/utils';
 
 const {toArray} = utils;
+=======
+var toArray = require('../../../lib/utils').toArray;
+>>>>>>> upstream/main
 
 describe('utils::kindOf', function () {
   it('should return object tag', function () {

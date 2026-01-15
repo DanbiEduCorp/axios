@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Axios v1.5.1 Copyright (c) 2023 Matt Zabriskie and contributors
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -17,6 +18,158 @@
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
+=======
+/* axios v0.27.2 | (c) 2022 by Matt Zabriskie */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["axios"] = factory();
+	else
+		root["axios"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./lib/axios */ "./lib/axios.js");
+
+/***/ }),
+
+/***/ "./lib/adapters/xhr.js":
+/*!*****************************!*\
+  !*** ./lib/adapters/xhr.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+var settle = __webpack_require__(/*! ./../core/settle */ "./lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./lib/helpers/cookies.js");
+var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./lib/helpers/buildURL.js");
+var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./lib/core/buildFullPath.js");
+var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./lib/helpers/parseHeaders.js");
+var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./lib/helpers/isURLSameOrigin.js");
+var transitionalDefaults = __webpack_require__(/*! ../defaults/transitional */ "./lib/defaults/transitional.js");
+var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "./lib/core/AxiosError.js");
+var CanceledError = __webpack_require__(/*! ../cancel/CanceledError */ "./lib/cancel/CanceledError.js");
+var parseProtocol = __webpack_require__(/*! ../helpers/parseProtocol */ "./lib/helpers/parseProtocol.js");
+
+module.exports = function xhrAdapter(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    var requestData = config.data;
+    var requestHeaders = config.headers;
+    var responseType = config.responseType;
+    var onCanceled;
+    function done() {
+      if (config.cancelToken) {
+        config.cancelToken.unsubscribe(onCanceled);
+      }
+
+      if (config.signal) {
+        config.signal.removeEventListener('abort', onCanceled);
+      }
+    }
+
+    if (utils.isFormData(requestData) && utils.isStandardBrowserEnv()) {
+      delete requestHeaders['Content-Type']; // Let the browser set it
+>>>>>>> upstream/main
     }
   }
   function _defineProperties(target, props) {
@@ -27,6 +180,7 @@
       if ("value" in descriptor) descriptor.writable = true;
       Object.defineProperty(target, descriptor.key, descriptor);
     }
+<<<<<<< HEAD
   }
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
@@ -53,6 +207,19 @@
       for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
         _arr.push(_s.value);
         if (i && _arr.length === i) break;
+=======
+
+    var fullPath = buildFullPath(config.baseURL, config.url);
+
+    request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
+
+    // Set the request timeout in MS
+    request.timeout = config.timeout;
+
+    function onloadend() {
+      if (!request) {
+        return;
+>>>>>>> upstream/main
       }
     } catch (err) {
       _d = true;
@@ -83,13 +250,28 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
+<<<<<<< HEAD
   function bind(fn, thisArg) {
     return function wrap() {
       return fn.apply(thisArg, arguments);
+=======
+      reject(new AxiosError('Request aborted', AxiosError.ECONNABORTED, config, request));
+
+      // Clean up request
+      request = null;
+>>>>>>> upstream/main
     };
   }
 
+<<<<<<< HEAD
   // utils is a library of generic helper functions non-specific to axios
+=======
+    // Handle low level network errors
+    request.onerror = function handleError() {
+      // Real errors are hidden from us by the browser
+      // onerror should only fire if it's a network error
+      reject(new AxiosError('Network Error', AxiosError.ERR_NETWORK, config, request, request));
+>>>>>>> upstream/main
 
   var toString = Object.prototype.toString;
   var getPrototypeOf = Object.getPrototypeOf;
@@ -98,11 +280,30 @@
       var str = toString.call(thing);
       return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
     };
+<<<<<<< HEAD
   }(Object.create(null));
   var kindOfTest = function kindOfTest(type) {
     type = type.toLowerCase();
     return function (thing) {
       return kindOf(thing) === type;
+=======
+
+    // Handle timeout
+    request.ontimeout = function handleTimeout() {
+      var timeoutErrorMessage = config.timeout ? 'timeout of ' + config.timeout + 'ms exceeded' : 'timeout exceeded';
+      var transitional = config.transitional || transitionalDefaults;
+      if (config.timeoutErrorMessage) {
+        timeoutErrorMessage = config.timeoutErrorMessage;
+      }
+      reject(new AxiosError(
+        timeoutErrorMessage,
+        transitional.clarifyTimeoutError ? AxiosError.ETIMEDOUT : AxiosError.ECONNABORTED,
+        config,
+        request));
+
+      // Clean up request
+      request = null;
+>>>>>>> upstream/main
     };
   };
   var typeOfTest = function typeOfTest(type) {
@@ -129,6 +330,7 @@
    */
   var isUndefined = typeOfTest('undefined');
 
+<<<<<<< HEAD
   /**
    * Determine if a value is a Buffer
    *
@@ -139,6 +341,19 @@
   function isBuffer(val) {
     return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && isFunction(val.constructor.isBuffer) && val.constructor.isBuffer(val);
   }
+=======
+    if (config.cancelToken || config.signal) {
+      // Handle cancellation
+      // eslint-disable-next-line func-names
+      onCanceled = function(cancel) {
+        if (!request) {
+          return;
+        }
+        reject(!cancel || (cancel && cancel.type) ? new CanceledError() : cancel);
+        request.abort();
+        request = null;
+      };
+>>>>>>> upstream/main
 
   /**
    * Determine if a value is an ArrayBuffer
@@ -166,6 +381,7 @@
     return result;
   }
 
+<<<<<<< HEAD
   /**
    * Determine if a value is a String
    *
@@ -174,6 +390,20 @@
    * @returns {boolean} True if value is a String, otherwise false
    */
   var isString = typeOfTest('string');
+=======
+    var protocol = parseProtocol(fullPath);
+
+    if (protocol && [ 'http', 'https', 'file' ].indexOf(protocol) === -1) {
+      reject(new AxiosError('Unsupported protocol ' + protocol + ':', AxiosError.ERR_BAD_REQUEST, config));
+      return;
+    }
+
+
+    // Send the request
+    request.send(requestData);
+  });
+};
+>>>>>>> upstream/main
 
   /**
    * Determine if a value is a Function
@@ -228,6 +458,7 @@
     return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in val) && !(Symbol.iterator in val);
   };
 
+<<<<<<< HEAD
   /**
    * Determine if a value is a Date
    *
@@ -236,6 +467,13 @@
    * @returns {boolean} True if value is a Date, otherwise false
    */
   var isDate = kindOfTest('Date');
+=======
+var utils = __webpack_require__(/*! ./utils */ "./lib/utils.js");
+var bind = __webpack_require__(/*! ./helpers/bind */ "./lib/helpers/bind.js");
+var Axios = __webpack_require__(/*! ./core/Axios */ "./lib/core/Axios.js");
+var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./lib/core/mergeConfig.js");
+var defaults = __webpack_require__(/*! ./defaults */ "./lib/defaults/index.js");
+>>>>>>> upstream/main
 
   /**
    * Determine if a value is a File
@@ -275,6 +513,7 @@
     return isObject(val) && isFunction(val.pipe);
   };
 
+<<<<<<< HEAD
   /**
    * Determine if a value is a FormData
    *
@@ -288,6 +527,29 @@
     // detect form-data instance
     kind === 'object' && isFunction(thing.toString) && thing.toString() === '[object FormData]'));
   };
+=======
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Expose Cancel & CancelToken
+axios.CanceledError = __webpack_require__(/*! ./cancel/CanceledError */ "./lib/cancel/CanceledError.js");
+axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./lib/cancel/CancelToken.js");
+axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./lib/cancel/isCancel.js");
+axios.VERSION = __webpack_require__(/*! ./env/data */ "./lib/env/data.js").version;
+axios.toFormData = __webpack_require__(/*! ./helpers/toFormData */ "./lib/helpers/toFormData.js");
+
+// Expose AxiosError class
+axios.AxiosError = __webpack_require__(/*! ../lib/core/AxiosError */ "./lib/core/AxiosError.js");
+
+// alias for CanceledError for backward compatibility
+axios.Cancel = axios.CanceledError;
+>>>>>>> upstream/main
 
   /**
    * Determine if a value is a URLSearchParams object
@@ -444,6 +706,7 @@
     return a;
   };
 
+<<<<<<< HEAD
   /**
    * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
    *
@@ -612,6 +875,14 @@
       return hasOwnProperty.call(obj, prop);
     };
   }(Object.prototype);
+=======
+/***/ "./lib/cancel/CancelToken.js":
+/*!***********************************!*\
+  !*** ./lib/cancel/CancelToken.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+>>>>>>> upstream/main
 
   /**
    * Determine if a value is a RegExp object
@@ -638,6 +909,7 @@
    * @param {Object} obj
    */
 
+<<<<<<< HEAD
   var freezeMethods = function freezeMethods(obj) {
     reduceDescriptors(obj, function (descriptor, name) {
       // skip restricted props in strict mode
@@ -690,6 +962,9 @@
     }
     return str;
   };
+=======
+var CanceledError = __webpack_require__(/*! ./CanceledError */ "./lib/cancel/CanceledError.js");
+>>>>>>> upstream/main
 
   /**
    * If the thing is a FormData object, return true, otherwise return false.
@@ -860,6 +1135,7 @@
   // eslint-disable-next-line strict
   var httpAdapter = null;
 
+<<<<<<< HEAD
   /**
    * Determines if the given thing is a array or js object.
    *
@@ -869,6 +1145,19 @@
    */
   function isVisitable(thing) {
     return utils.isPlainObject(thing) || utils.isArray(thing);
+=======
+    token.reason = new CanceledError(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `CanceledError` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+>>>>>>> upstream/main
   }
 
   /**
@@ -928,6 +1217,7 @@
    * @returns {Object}
    **/
 
+<<<<<<< HEAD
   /**
    * It converts an object into a FormData object
    *
@@ -940,6 +1230,136 @@
   function toFormData(obj, formData, options) {
     if (!utils.isObject(obj)) {
       throw new TypeError('target must be an object');
+=======
+
+/***/ }),
+
+/***/ "./lib/cancel/CanceledError.js":
+/*!*************************************!*\
+  !*** ./lib/cancel/CanceledError.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "./lib/core/AxiosError.js");
+var utils = __webpack_require__(/*! ../utils */ "./lib/utils.js");
+
+/**
+ * A `CanceledError` is an object that is thrown when an operation is canceled.
+ *
+ * @class
+ * @param {string=} message The message.
+ */
+function CanceledError(message) {
+  // eslint-disable-next-line no-eq-null,eqeqeq
+  AxiosError.call(this, message == null ? 'canceled' : message, AxiosError.ERR_CANCELED);
+  this.name = 'CanceledError';
+}
+
+utils.inherits(CanceledError, AxiosError, {
+  __CANCEL__: true
+});
+
+module.exports = CanceledError;
+
+
+/***/ }),
+
+/***/ "./lib/cancel/isCancel.js":
+/*!********************************!*\
+  !*** ./lib/cancel/isCancel.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+};
+
+
+/***/ }),
+
+/***/ "./lib/core/Axios.js":
+/*!***************************!*\
+  !*** ./lib/core/Axios.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./lib/helpers/buildURL.js");
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./lib/core/InterceptorManager.js");
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./lib/core/dispatchRequest.js");
+var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./lib/core/mergeConfig.js");
+var buildFullPath = __webpack_require__(/*! ./buildFullPath */ "./lib/core/buildFullPath.js");
+var validator = __webpack_require__(/*! ../helpers/validator */ "./lib/helpers/validator.js");
+
+var validators = validator.validators;
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(configOrUrl, config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof configOrUrl === 'string') {
+    config = config || {};
+    config.url = configOrUrl;
+  } else {
+    config = configOrUrl || {};
+  }
+
+  config = mergeConfig(this.defaults, config);
+
+  // Set config.method
+  if (config.method) {
+    config.method = config.method.toLowerCase();
+  } else if (this.defaults.method) {
+    config.method = this.defaults.method.toLowerCase();
+  } else {
+    config.method = 'get';
+  }
+
+  var transitional = config.transitional;
+
+  if (transitional !== undefined) {
+    validator.assertOptions(transitional, {
+      silentJSONParsing: validators.transitional(validators.boolean),
+      forcedJSONParsing: validators.transitional(validators.boolean),
+      clarifyTimeoutError: validators.transitional(validators.boolean)
+    }, false);
+  }
+
+  // filter out skipped interceptors
+  var requestInterceptorChain = [];
+  var synchronousRequestInterceptors = true;
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    if (typeof interceptor.runWhen === 'function' && interceptor.runWhen(config) === false) {
+      return;
+>>>>>>> upstream/main
     }
 
     // eslint-disable-next-line no-param-reassign
@@ -1075,6 +1495,7 @@
     this._pairs = [];
     params && toFormData(params, this, options);
   }
+<<<<<<< HEAD
   var prototype = AxiosURLSearchParams.prototype;
   prototype.append = function append(name, value) {
     this._pairs.push([name, value]);
@@ -1087,6 +1508,169 @@
       return _encode(pair[0]) + '=' + _encode(pair[1]);
     }, '').join('&');
   };
+=======
+
+  return promise;
+};
+
+Axios.prototype.getUri = function getUri(config) {
+  config = mergeConfig(this.defaults, config);
+  var fullPath = buildFullPath(config.baseURL, config.url);
+  return buildURL(fullPath, config.params, config.paramsSerializer);
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(mergeConfig(config || {}, {
+      method: method,
+      url: url,
+      data: (config || {}).data
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+
+  function generateHTTPMethod(isForm) {
+    return function httpMethod(url, data, config) {
+      return this.request(mergeConfig(config || {}, {
+        method: method,
+        headers: isForm ? {
+          'Content-Type': 'multipart/form-data'
+        } : {},
+        url: url,
+        data: data
+      }));
+    };
+  }
+
+  Axios.prototype[method] = generateHTTPMethod();
+
+  Axios.prototype[method + 'Form'] = generateHTTPMethod(true);
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+
+/***/ "./lib/core/AxiosError.js":
+/*!********************************!*\
+  !*** ./lib/core/AxiosError.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ../utils */ "./lib/utils.js");
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [config] The config.
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+function AxiosError(message, code, config, request, response) {
+  Error.call(this);
+  this.message = message;
+  this.name = 'AxiosError';
+  code && (this.code = code);
+  config && (this.config = config);
+  request && (this.request = request);
+  response && (this.response = response);
+}
+
+utils.inherits(AxiosError, Error, {
+  toJSON: function toJSON() {
+    return {
+      // Standard
+      message: this.message,
+      name: this.name,
+      // Microsoft
+      description: this.description,
+      number: this.number,
+      // Mozilla
+      fileName: this.fileName,
+      lineNumber: this.lineNumber,
+      columnNumber: this.columnNumber,
+      stack: this.stack,
+      // Axios
+      config: this.config,
+      code: this.code,
+      status: this.response && this.response.status ? this.response.status : null
+    };
+  }
+});
+
+var prototype = AxiosError.prototype;
+var descriptors = {};
+
+[
+  'ERR_BAD_OPTION_VALUE',
+  'ERR_BAD_OPTION',
+  'ECONNABORTED',
+  'ETIMEDOUT',
+  'ERR_NETWORK',
+  'ERR_FR_TOO_MANY_REDIRECTS',
+  'ERR_DEPRECATED',
+  'ERR_BAD_RESPONSE',
+  'ERR_BAD_REQUEST',
+  'ERR_CANCELED'
+// eslint-disable-next-line func-names
+].forEach(function(code) {
+  descriptors[code] = {value: code};
+});
+
+Object.defineProperties(AxiosError, descriptors);
+Object.defineProperty(prototype, 'isAxiosError', {value: true});
+
+// eslint-disable-next-line func-names
+AxiosError.from = function(error, code, config, request, response, customProps) {
+  var axiosError = Object.create(prototype);
+
+  utils.toFlatObject(error, axiosError, function filter(obj) {
+    return obj !== Error.prototype;
+  });
+
+  AxiosError.call(axiosError, error.message, code, config, request, response);
+
+  axiosError.name = error.name;
+
+  customProps && Object.assign(axiosError, customProps);
+
+  return axiosError;
+};
+
+module.exports = AxiosError;
+
+
+/***/ }),
+
+/***/ "./lib/core/InterceptorManager.js":
+/*!****************************************!*\
+  !*** ./lib/core/InterceptorManager.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+>>>>>>> upstream/main
 
   /**
    * It replaces all instances of the characters `:`, `$`, `,`, `+`, `[`, and `]` with their
@@ -1132,6 +1716,7 @@
     return url;
   }
 
+<<<<<<< HEAD
   var InterceptorManager = /*#__PURE__*/function () {
     function InterceptorManager() {
       _classCallCheck(this, InterceptorManager);
@@ -1209,6 +1794,16 @@
     return InterceptorManager;
   }();
   var InterceptorManager$1 = InterceptorManager;
+=======
+/***/ }),
+
+/***/ "./lib/core/dispatchRequest.js":
+/*!*************************************!*\
+  !*** ./lib/core/dispatchRequest.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+>>>>>>> upstream/main
 
   var transitionalDefaults = {
     silentJSONParsing: true,
@@ -1218,6 +1813,7 @@
 
   var URLSearchParams$1 = typeof URLSearchParams !== 'undefined' ? URLSearchParams : AxiosURLSearchParams;
 
+<<<<<<< HEAD
   var FormData$1 = typeof FormData !== 'undefined' ? FormData : null;
 
   var Blob$1 = typeof Blob !== 'undefined' ? Blob : null;
@@ -1243,6 +1839,58 @@
     var product;
     if (typeof navigator !== 'undefined' && ((product = navigator.product) === 'ReactNative' || product === 'NativeScript' || product === 'NS')) {
       return false;
+=======
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+var transformData = __webpack_require__(/*! ./transformData */ "./lib/core/transformData.js");
+var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./lib/cancel/isCancel.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./lib/defaults/index.js");
+var CanceledError = __webpack_require__(/*! ../cancel/CanceledError */ "./lib/cancel/CanceledError.js");
+
+/**
+ * Throws a `CanceledError` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+
+  if (config.signal && config.signal.aborted) {
+    throw new CanceledError();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData.call(
+    config,
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+>>>>>>> upstream/main
     }
     return typeof window !== 'undefined' && typeof document !== 'undefined';
   }();
@@ -1282,6 +1930,7 @@
         }
         return helpers.defaultVisitor.apply(this, arguments);
       }
+<<<<<<< HEAD
     }, options));
   }
 
@@ -1318,6 +1967,49 @@
     for (i = 0; i < len; i++) {
       key = keys[i];
       obj[key] = arr[key];
+=======
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+
+/***/ }),
+
+/***/ "./lib/core/mergeConfig.js":
+/*!*********************************!*\
+  !*** ./lib/core/mergeConfig.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ../utils */ "./lib/utils.js");
+
+/**
+ * Config-specific merge-function which creates a new config-object
+ * by merging two configuration objects together.
+ *
+ * @param {Object} config1
+ * @param {Object} config2
+ * @returns {Object} New object resulting from merging config2 to config1
+ */
+module.exports = function mergeConfig(config1, config2) {
+  // eslint-disable-next-line no-param-reassign
+  config2 = config2 || {};
+  var config = {};
+
+  function getMergedValue(target, source) {
+    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
+      return utils.merge(target, source);
+    } else if (utils.isPlainObject(source)) {
+      return utils.merge({}, source);
+    } else if (utils.isArray(source)) {
+      return source.slice();
+>>>>>>> upstream/main
     }
     return obj;
   }
@@ -1540,8 +2232,40 @@
     }
     return tokens;
   }
+<<<<<<< HEAD
   var isValidHeaderName = function isValidHeaderName(str) {
     return /^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(str.trim());
+=======
+
+  var mergeMap = {
+    'url': valueFromConfig2,
+    'method': valueFromConfig2,
+    'data': valueFromConfig2,
+    'baseURL': defaultToConfig2,
+    'transformRequest': defaultToConfig2,
+    'transformResponse': defaultToConfig2,
+    'paramsSerializer': defaultToConfig2,
+    'timeout': defaultToConfig2,
+    'timeoutMessage': defaultToConfig2,
+    'withCredentials': defaultToConfig2,
+    'adapter': defaultToConfig2,
+    'responseType': defaultToConfig2,
+    'xsrfCookieName': defaultToConfig2,
+    'xsrfHeaderName': defaultToConfig2,
+    'onUploadProgress': defaultToConfig2,
+    'onDownloadProgress': defaultToConfig2,
+    'decompress': defaultToConfig2,
+    'maxContentLength': defaultToConfig2,
+    'maxBodyLength': defaultToConfig2,
+    'beforeRedirect': defaultToConfig2,
+    'transport': defaultToConfig2,
+    'httpAgent': defaultToConfig2,
+    'httpsAgent': defaultToConfig2,
+    'cancelToken': defaultToConfig2,
+    'socketPath': defaultToConfig2,
+    'responseEncoding': defaultToConfig2,
+    'validateStatus': mergeDirectKeys
+>>>>>>> upstream/main
   };
   function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
     if (utils.isFunction(filter)) {
@@ -1793,6 +2517,7 @@
   utils.freezeMethods(AxiosHeaders);
   var AxiosHeaders$1 = AxiosHeaders;
 
+<<<<<<< HEAD
   /**
    * Transform the data for a request or a response
    *
@@ -1811,11 +2536,55 @@
     });
     headers.normalize();
     return data;
+=======
+  return config;
+};
+
+
+/***/ }),
+
+/***/ "./lib/core/settle.js":
+/*!****************************!*\
+  !*** ./lib/core/settle.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var AxiosError = __webpack_require__(/*! ./AxiosError */ "./lib/core/AxiosError.js");
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(new AxiosError(
+      'Request failed with status code ' + response.status,
+      [AxiosError.ERR_BAD_REQUEST, AxiosError.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4],
+      response.config,
+      response.request,
+      response
+    ));
+>>>>>>> upstream/main
   }
 
+<<<<<<< HEAD
   function isCancel(value) {
     return !!(value && value.__CANCEL__);
   }
+=======
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./lib/defaults/index.js");
+>>>>>>> upstream/main
 
   /**
    * A `CanceledError` is an object that is thrown when an operation is canceled.
@@ -1835,6 +2604,7 @@
     __CANCEL__: true
   });
 
+<<<<<<< HEAD
   /**
    * Resolve or reject a Promise based on response status.
    *
@@ -1852,6 +2622,29 @@
       reject(new AxiosError('Request failed with status code ' + response.status, [AxiosError.ERR_BAD_REQUEST, AxiosError.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4], response.config, response.request, response));
     }
   }
+=======
+  return data;
+};
+
+
+/***/ }),
+
+/***/ "./lib/defaults/index.js":
+/*!*******************************!*\
+  !*** ./lib/defaults/index.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ../utils */ "./lib/utils.js");
+var normalizeHeaderName = __webpack_require__(/*! ../helpers/normalizeHeaderName */ "./lib/helpers/normalizeHeaderName.js");
+var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "./lib/core/AxiosError.js");
+var transitionalDefaults = __webpack_require__(/*! ./transitional */ "./lib/defaults/transitional.js");
+var toFormData = __webpack_require__(/*! ../helpers/toFormData */ "./lib/helpers/toFormData.js");
+>>>>>>> upstream/main
 
   var cookies = platform.isStandardBrowserEnv ?
   // Standard browser envs support document.cookie
@@ -1912,6 +2705,7 @@
     // by any combination of letters, digits, plus, period, or hyphen.
     return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
   }
+<<<<<<< HEAD
 
   /**
    * Creates a new URL by combining the specified URLs
@@ -1923,6 +2717,18 @@
    */
   function combineURLs(baseURL, relativeURL) {
     return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
+=======
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(/*! ../adapters/xhr */ "./lib/adapters/xhr.js");
+  } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(/*! ../adapters/http */ "./lib/adapters/xhr.js");
+>>>>>>> upstream/main
   }
 
   /**
@@ -1942,6 +2748,7 @@
     return requestedURL;
   }
 
+<<<<<<< HEAD
   var isURLSameOrigin = platform.isStandardBrowserEnv ?
   // Standard browser envs have full support of the APIs needed to test
   // whether the request URL is of the same origin as current location.
@@ -1949,6 +2756,16 @@
     var msie = /(msie|trident)/i.test(navigator.userAgent);
     var urlParsingNode = document.createElement('a');
     var originURL;
+=======
+  return (encoder || JSON.stringify)(rawValue);
+}
+
+var defaults = {
+
+  transitional: transitionalDefaults,
+
+  adapter: getDefaultAdapter(),
+>>>>>>> upstream/main
 
     /**
     * Parse a URL to discover it's components
@@ -1965,6 +2782,7 @@
       }
       urlParsingNode.setAttribute('href', href);
 
+<<<<<<< HEAD
       // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
       return {
         href: urlParsingNode.href,
@@ -1996,6 +2814,59 @@
       return true;
     };
   }();
+=======
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+
+    var isObjectPayload = utils.isObject(data);
+    var contentType = headers && headers['Content-Type'];
+
+    var isFileList;
+
+    if ((isFileList = utils.isFileList(data)) || (isObjectPayload && contentType === 'multipart/form-data')) {
+      var _FormData = this.env && this.env.FormData;
+      return toFormData(isFileList ? {'files[]': data} : data, _FormData && new _FormData());
+    } else if (isObjectPayload || contentType === 'application/json') {
+      setContentTypeIfUnset(headers, 'application/json');
+      return stringifySafely(data);
+    }
+
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    var transitional = this.transitional || defaults.transitional;
+    var silentJSONParsing = transitional && transitional.silentJSONParsing;
+    var forcedJSONParsing = transitional && transitional.forcedJSONParsing;
+    var strictJSONParsing = !silentJSONParsing && this.responseType === 'json';
+
+    if (strictJSONParsing || (forcedJSONParsing && utils.isString(data) && data.length)) {
+      try {
+        return JSON.parse(data);
+      } catch (e) {
+        if (strictJSONParsing) {
+          if (e.name === 'SyntaxError') {
+            throw AxiosError.from(e, AxiosError.ERR_BAD_RESPONSE, this, null, this.response);
+          }
+          throw e;
+        }
+      }
+    }
+>>>>>>> upstream/main
 
   function parseProtocol(url) {
     var match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
@@ -2093,6 +2964,7 @@
       }
       var request = new XMLHttpRequest();
 
+<<<<<<< HEAD
       // HTTP basic authentication
       if (config.auth) {
         var username = config.auth.username || '';
@@ -2101,6 +2973,15 @@
       }
       var fullPath = buildFullPath(config.baseURL, config.url);
       request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
+=======
+  env: {
+    FormData: __webpack_require__(/*! ./env/FormData */ "./lib/helpers/null.js")
+  },
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  },
+>>>>>>> upstream/main
 
       // Set the request timeout in MS
       request.timeout = config.timeout;
@@ -2174,6 +3055,7 @@
         request = null;
       };
 
+<<<<<<< HEAD
       // Handle timeout
       request.ontimeout = function handleTimeout() {
         var timeoutErrorMessage = config.timeout ? 'timeout of ' + config.timeout + 'ms exceeded' : 'timeout exceeded';
@@ -2186,6 +3068,37 @@
         // Clean up request
         request = null;
       };
+=======
+/***/ "./lib/defaults/transitional.js":
+/*!**************************************!*\
+  !*** ./lib/defaults/transitional.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  silentJSONParsing: true,
+  forcedJSONParsing: true,
+  clarifyTimeoutError: false
+};
+
+
+/***/ }),
+
+/***/ "./lib/env/data.js":
+/*!*************************!*\
+  !*** ./lib/env/data.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "version": "0.27.2"
+};
+>>>>>>> upstream/main
 
       // Add xsrf header
       // This is only done if running in a standard browser environment.
@@ -2859,6 +3772,7 @@
     };
   }
 
+<<<<<<< HEAD
   /**
    * Determines whether the payload is an error thrown by Axios
    *
@@ -2934,6 +3848,149 @@
     LoopDetected: 508,
     NotExtended: 510,
     NetworkAuthenticationRequired: 511
+=======
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+
+/***/ "./lib/helpers/null.js":
+/*!*****************************!*\
+  !*** ./lib/helpers/null.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// eslint-disable-next-line strict
+module.exports = null;
+
+
+/***/ }),
+
+/***/ "./lib/helpers/parseHeaders.js":
+/*!*************************************!*\
+  !*** ./lib/helpers/parseHeaders.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./../utils */ "./lib/utils.js");
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
+
+/***/ }),
+
+/***/ "./lib/helpers/parseProtocol.js":
+/*!**************************************!*\
+  !*** ./lib/helpers/parseProtocol.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function parseProtocol(url) {
+  var match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
+  return match && match[1] || '';
+};
+
+
+/***/ }),
+
+/***/ "./lib/helpers/spread.js":
+/*!*******************************!*\
+  !*** ./lib/helpers/spread.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+>>>>>>> upstream/main
   };
   Object.entries(HttpStatusCode).forEach(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
@@ -2954,10 +4011,103 @@
     var context = new Axios$1(defaultConfig);
     var instance = bind(Axios$1.prototype.request, context);
 
+<<<<<<< HEAD
     // Copy axios.prototype to instance
     utils.extend(instance, Axios$1.prototype, context, {
       allOwnKeys: true
     });
+=======
+/***/ "./lib/helpers/toFormData.js":
+/*!***********************************!*\
+  !*** ./lib/helpers/toFormData.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ../utils */ "./lib/utils.js");
+
+/**
+ * Convert a data object to FormData
+ * @param {Object} obj
+ * @param {?Object} [formData]
+ * @returns {Object}
+ **/
+
+function toFormData(obj, formData) {
+  // eslint-disable-next-line no-param-reassign
+  formData = formData || new FormData();
+
+  var stack = [];
+
+  function convertValue(value) {
+    if (value === null) return '';
+
+    if (utils.isDate(value)) {
+      return value.toISOString();
+    }
+
+    if (utils.isArrayBuffer(value) || utils.isTypedArray(value)) {
+      return typeof Blob === 'function' ? new Blob([value]) : Buffer.from(value);
+    }
+
+    return value;
+  }
+
+  function build(data, parentKey) {
+    if (utils.isPlainObject(data) || utils.isArray(data)) {
+      if (stack.indexOf(data) !== -1) {
+        throw Error('Circular reference detected in ' + parentKey);
+      }
+
+      stack.push(data);
+
+      utils.forEach(data, function each(value, key) {
+        if (utils.isUndefined(value)) return;
+        var fullKey = parentKey ? parentKey + '.' + key : key;
+        var arr;
+
+        if (value && !parentKey && typeof value === 'object') {
+          if (utils.endsWith(key, '{}')) {
+            // eslint-disable-next-line no-param-reassign
+            value = JSON.stringify(value);
+          } else if (utils.endsWith(key, '[]') && (arr = utils.toArray(value))) {
+            // eslint-disable-next-line func-names
+            arr.forEach(function(el) {
+              !utils.isUndefined(el) && formData.append(fullKey, convertValue(el));
+            });
+            return;
+          }
+        }
+
+        build(value, fullKey);
+      });
+
+      stack.pop();
+    } else {
+      formData.append(parentKey, convertValue(data));
+    }
+  }
+
+  build(obj);
+
+  return formData;
+}
+
+module.exports = toFormData;
+
+
+/***/ }),
+
+/***/ "./lib/helpers/validator.js":
+/*!**********************************!*\
+  !*** ./lib/helpers/validator.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+>>>>>>> upstream/main
 
     // Copy context to instance
     utils.extend(instance, context, null, {
@@ -2971,8 +4121,13 @@
     return instance;
   }
 
+<<<<<<< HEAD
   // Create the default instance to be exported
   var axios = createInstance(defaults$1);
+=======
+var VERSION = __webpack_require__(/*! ../env/data */ "./lib/env/data.js").version;
+var AxiosError = __webpack_require__(/*! ../core/AxiosError */ "./lib/core/AxiosError.js");
+>>>>>>> upstream/main
 
   // Expose Axios class to allow class inheritance
   axios.Axios = Axios$1;
@@ -2984,8 +4139,19 @@
   axios.VERSION = VERSION;
   axios.toFormData = toFormData;
 
+<<<<<<< HEAD
   // Expose AxiosError class
   axios.AxiosError = AxiosError;
+=======
+  // eslint-disable-next-line func-names
+  return function(value, opt, opts) {
+    if (validator === false) {
+      throw new AxiosError(
+        formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')),
+        AxiosError.ERR_DEPRECATED
+      );
+    }
+>>>>>>> upstream/main
 
   // alias for CanceledError for backward compatibility
   axios.Cancel = axios.CanceledError;
@@ -2994,10 +4160,320 @@
   axios.all = function all(promises) {
     return Promise.all(promises);
   };
+<<<<<<< HEAD
   axios.spread = spread;
 
   // Expose isAxiosError
   axios.isAxiosError = isAxiosError;
+=======
+};
+
+/**
+ * Assert object's properties type
+ * @param {object} options
+ * @param {object} schema
+ * @param {boolean?} allowUnknown
+ */
+
+function assertOptions(options, schema, allowUnknown) {
+  if (typeof options !== 'object') {
+    throw new AxiosError('options must be an object', AxiosError.ERR_BAD_OPTION_VALUE);
+  }
+  var keys = Object.keys(options);
+  var i = keys.length;
+  while (i-- > 0) {
+    var opt = keys[i];
+    var validator = schema[opt];
+    if (validator) {
+      var value = options[opt];
+      var result = value === undefined || validator(value, opt, options);
+      if (result !== true) {
+        throw new AxiosError('option ' + opt + ' must be ' + result, AxiosError.ERR_BAD_OPTION_VALUE);
+      }
+      continue;
+    }
+    if (allowUnknown !== true) {
+      throw new AxiosError('Unknown option ' + opt, AxiosError.ERR_BAD_OPTION);
+    }
+  }
+}
+
+module.exports = {
+  assertOptions: assertOptions,
+  validators: validators
+};
+
+
+/***/ }),
+
+/***/ "./lib/utils.js":
+/*!**********************!*\
+  !*** ./lib/utils.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__(/*! ./helpers/bind */ "./lib/helpers/bind.js");
+
+// utils is a library of generic helper functions non-specific to axios
+
+var toString = Object.prototype.toString;
+
+// eslint-disable-next-line func-names
+var kindOf = (function(cache) {
+  // eslint-disable-next-line func-names
+  return function(thing) {
+    var str = toString.call(thing);
+    return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
+  };
+})(Object.create(null));
+
+function kindOfTest(type) {
+  type = type.toLowerCase();
+  return function isKindOf(thing) {
+    return kindOf(thing) === type;
+  };
+}
+
+/**
+ * Determine if a value is an Array
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Array, otherwise false
+ */
+function isArray(val) {
+  return Array.isArray(val);
+}
+
+/**
+ * Determine if a value is undefined
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if the value is undefined, otherwise false
+ */
+function isUndefined(val) {
+  return typeof val === 'undefined';
+}
+
+/**
+ * Determine if a value is a Buffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Buffer, otherwise false
+ */
+function isBuffer(val) {
+  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor)
+    && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
+}
+
+/**
+ * Determine if a value is an ArrayBuffer
+ *
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+ */
+var isArrayBuffer = kindOfTest('ArrayBuffer');
+
+
+/**
+ * Determine if a value is a view on an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+ */
+function isArrayBufferView(val) {
+  var result;
+  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = (val) && (val.buffer) && (isArrayBuffer(val.buffer));
+  }
+  return result;
+}
+
+/**
+ * Determine if a value is a String
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a String, otherwise false
+ */
+function isString(val) {
+  return typeof val === 'string';
+}
+
+/**
+ * Determine if a value is a Number
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Number, otherwise false
+ */
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+/**
+ * Determine if a value is an Object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Object, otherwise false
+ */
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
+
+/**
+ * Determine if a value is a plain Object
+ *
+ * @param {Object} val The value to test
+ * @return {boolean} True if value is a plain Object, otherwise false
+ */
+function isPlainObject(val) {
+  if (kindOf(val) !== 'object') {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
+}
+
+/**
+ * Determine if a value is a Date
+ *
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Date, otherwise false
+ */
+var isDate = kindOfTest('Date');
+
+/**
+ * Determine if a value is a File
+ *
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a File, otherwise false
+ */
+var isFile = kindOfTest('File');
+
+/**
+ * Determine if a value is a Blob
+ *
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Blob, otherwise false
+ */
+var isBlob = kindOfTest('Blob');
+
+/**
+ * Determine if a value is a FileList
+ *
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a File, otherwise false
+ */
+var isFileList = kindOfTest('FileList');
+
+/**
+ * Determine if a value is a Function
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Function, otherwise false
+ */
+function isFunction(val) {
+  return toString.call(val) === '[object Function]';
+}
+
+/**
+ * Determine if a value is a Stream
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Stream, otherwise false
+ */
+function isStream(val) {
+  return isObject(val) && isFunction(val.pipe);
+}
+
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {Object} thing The value to test
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */
+function isFormData(thing) {
+  var pattern = '[object FormData]';
+  return thing && (
+    (typeof FormData === 'function' && thing instanceof FormData) ||
+    toString.call(thing) === pattern ||
+    (isFunction(thing.toString) && thing.toString() === pattern)
+  );
+}
+
+/**
+ * Determine if a value is a URLSearchParams object
+ * @function
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+ */
+var isURLSearchParams = kindOfTest('URLSearchParams');
+
+/**
+ * Trim excess whitespace off the beginning and end of a string
+ *
+ * @param {String} str The String to trim
+ * @returns {String} The String freed of excess whitespace
+ */
+function trim(str) {
+  return str.trim ? str.trim() : str.replace(/^\s+|\s+$/g, '');
+}
+
+/**
+ * Determine if we're running in a standard browser environment
+ *
+ * This allows axios to run in a web worker, and react-native.
+ * Both environments support XMLHttpRequest, but not fully standard globals.
+ *
+ * web workers:
+ *  typeof window -> undefined
+ *  typeof document -> undefined
+ *
+ * react-native:
+ *  navigator.product -> 'ReactNative'
+ * nativescript
+ *  navigator.product -> 'NativeScript' or 'NS'
+ */
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
+                                           navigator.product === 'NativeScript' ||
+                                           navigator.product === 'NS')) {
+    return false;
+  }
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined'
+  );
+}
+
+/**
+ * Iterate over an Array or an Object invoking a function for each item.
+ *
+ * If `obj` is an Array callback will be called passing
+ * the value, index, and complete array for each item.
+ *
+ * If 'obj' is an Object callback will be called passing
+ * the value, key, and complete object for each property.
+ *
+ * @param {Object|Array} obj The object to iterate
+ * @param {Function} fn The callback to invoke for each item
+ */
+function forEach(obj, fn) {
+  // Don't bother if no value provided
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+>>>>>>> upstream/main
 
   // Expose mergeConfig
   axios.mergeConfig = mergeConfig;
@@ -3011,5 +4487,173 @@
 
   return axios;
 
+<<<<<<< HEAD
 }));
 //# sourceMappingURL=axios.js.map
+=======
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Extends object a by mutably adding to it the properties of object b.
+ *
+ * @param {Object} a The object to be extended
+ * @param {Object} b The object to copy properties from
+ * @param {Object} thisArg The object to bind function to
+ * @return {Object} The resulting value of object a
+ */
+function extend(a, b, thisArg) {
+  forEach(b, function assignValue(val, key) {
+    if (thisArg && typeof val === 'function') {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  });
+  return a;
+}
+
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ * @return {string} content value without BOM
+ */
+function stripBOM(content) {
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+}
+
+/**
+ * Inherit the prototype methods from one constructor into another
+ * @param {function} constructor
+ * @param {function} superConstructor
+ * @param {object} [props]
+ * @param {object} [descriptors]
+ */
+
+function inherits(constructor, superConstructor, props, descriptors) {
+  constructor.prototype = Object.create(superConstructor.prototype, descriptors);
+  constructor.prototype.constructor = constructor;
+  props && Object.assign(constructor.prototype, props);
+}
+
+/**
+ * Resolve object with deep prototype chain to a flat object
+ * @param {Object} sourceObj source object
+ * @param {Object} [destObj]
+ * @param {Function} [filter]
+ * @returns {Object}
+ */
+
+function toFlatObject(sourceObj, destObj, filter) {
+  var props;
+  var i;
+  var prop;
+  var merged = {};
+
+  destObj = destObj || {};
+
+  do {
+    props = Object.getOwnPropertyNames(sourceObj);
+    i = props.length;
+    while (i-- > 0) {
+      prop = props[i];
+      if (!merged[prop]) {
+        destObj[prop] = sourceObj[prop];
+        merged[prop] = true;
+      }
+    }
+    sourceObj = Object.getPrototypeOf(sourceObj);
+  } while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
+
+  return destObj;
+}
+
+/*
+ * determines whether a string ends with the characters of a specified string
+ * @param {String} str
+ * @param {String} searchString
+ * @param {Number} [position= 0]
+ * @returns {boolean}
+ */
+function endsWith(str, searchString, position) {
+  str = String(str);
+  if (position === undefined || position > str.length) {
+    position = str.length;
+  }
+  position -= searchString.length;
+  var lastIndex = str.indexOf(searchString, position);
+  return lastIndex !== -1 && lastIndex === position;
+}
+
+
+/**
+ * Returns new array from array like object
+ * @param {*} [thing]
+ * @returns {Array}
+ */
+function toArray(thing) {
+  if (!thing) return null;
+  var i = thing.length;
+  if (isUndefined(i)) return null;
+  var arr = new Array(i);
+  while (i-- > 0) {
+    arr[i] = thing[i];
+  }
+  return arr;
+}
+
+// eslint-disable-next-line func-names
+var isTypedArray = (function(TypedArray) {
+  // eslint-disable-next-line func-names
+  return function(thing) {
+    return TypedArray && thing instanceof TypedArray;
+  };
+})(typeof Uint8Array !== 'undefined' && Object.getPrototypeOf(Uint8Array));
+
+module.exports = {
+  isArray: isArray,
+  isArrayBuffer: isArrayBuffer,
+  isBuffer: isBuffer,
+  isFormData: isFormData,
+  isArrayBufferView: isArrayBufferView,
+  isString: isString,
+  isNumber: isNumber,
+  isObject: isObject,
+  isPlainObject: isPlainObject,
+  isUndefined: isUndefined,
+  isDate: isDate,
+  isFile: isFile,
+  isBlob: isBlob,
+  isFunction: isFunction,
+  isStream: isStream,
+  isURLSearchParams: isURLSearchParams,
+  isStandardBrowserEnv: isStandardBrowserEnv,
+  forEach: forEach,
+  merge: merge,
+  extend: extend,
+  trim: trim,
+  stripBOM: stripBOM,
+  inherits: inherits,
+  toFlatObject: toFlatObject,
+  kindOf: kindOf,
+  kindOfTest: kindOfTest,
+  endsWith: endsWith,
+  toArray: toArray,
+  isTypedArray: isTypedArray,
+  isFileList: isFileList
+};
+
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=axios.map
+>>>>>>> upstream/main

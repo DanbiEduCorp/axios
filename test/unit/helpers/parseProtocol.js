@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import assert from 'assert';
 import utils from '../../../lib/utils.js';
 import parseProtocol from '../../../lib/helpers/parseProtocol.js';
+=======
+var assert = require('assert');
+var utils = require('../../../lib/utils');
+var parseProtocol = require('../../../lib/helpers/parseProtocol');
+>>>>>>> upstream/main
 
 describe('helpers::parseProtocol', function () {
   it('should parse protocol part if it exists', function () {

@@ -35,6 +35,7 @@ describe('defaults', function () {
   });
 
   it("should transform the plain data object to a FormData instance 'Content-Type' if header is 'multipart/form-data'", function() {
+<<<<<<< HEAD
     const headers = new AxiosHeaders({
       'Content-Type': 'multipart/form-data'
     });
@@ -42,6 +43,15 @@ describe('defaults', function () {
     const payload = {x: 1};
 
     const transformed = defaults.transformRequest[0](payload, headers);
+=======
+    var headers = {
+      'Content-Type': 'multipart/form-data'
+    };
+
+    var payload = {x: 1};
+
+    var transformed = defaults.transformRequest[0](payload, headers);
+>>>>>>> upstream/main
 
     expect(transformed).toEqual(jasmine.any(FormData));
   });

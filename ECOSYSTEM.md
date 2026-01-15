@@ -20,7 +20,10 @@ This is a list of axios related libraries and resources. If you have a suggestio
 * [axios-endpoints](https://github.com/renancaraujo/axios-endpoints) - Axios endpoints helps you to create a more concise endpoint mapping with axios.
 * [axios-multi-api](https://github.com/MattCCC/axios-multi-api) - Easy API handling whenever there are many endpoints to add. It helps to make Axios requests in an easy and declarative manner.
 * [axios-url-template](https://github.com/rafw87/axios-url-template) - Axios interceptor adding support for URL templates.
+<<<<<<< HEAD
 * [zodios](https://www.zodios.org) - Typesafe API client based on axios
+=======
+>>>>>>> upstream/main
 
 ### Logging and debugging
 
@@ -43,3 +46,19 @@ This is a list of axios related libraries and resources. If you have a suggestio
 * [axios-test-instance](https://github.com/remcohaszing/axios-test-instance) — Test NodeJS backends using Axios
 * [moxios](https://github.com/axios/moxios) - Mock axios requests for testing
 * [mocha-axios](https://github.com/jdrydn/mocha-axios) - Streamlined integration testing with Mocha & Axios
+
+## Resources
+
+### General
+
+* [Connection pooling with agentkeepalive](https://traveling-coderman.net/code/node-architecture/connection-pooling/)
+* [Error handling in Express.js](https://traveling-coderman.net/code/node-architecture/axios-error-handling/)
+* [Request authentication with JWT](https://traveling-coderman.net/code/node-architecture/http-auth/)
+
+### Logging and debugging
+
+* [Pino request logging](https://traveling-coderman.net/code/node-architecture/logging-http-requests/)
+
+### Unit testing
+
+* [Organizing and testing HTTP requests](https://traveling-coderman.net/code/node-architecture/sending-http-requests/)

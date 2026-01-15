@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "module": "node16",
+=======
+    "module": "commonjs",
+>>>>>>> upstream/main
     "lib": ["dom", "es2015"],
     "types": [],
     "strict": true,

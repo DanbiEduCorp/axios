@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {spawn} from 'child_process';
+=======
+const {spawn} = require('child_process');
+>>>>>>> upstream/main
 
 const args = process.argv.slice(2);
 

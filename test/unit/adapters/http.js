@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from '../../../index.js';
 import http from 'http';
 import https from 'https';
@@ -129,6 +130,28 @@ function generateReadableStream(length = 1024 * 1024, chunkSize = 10 * 1024, sle
     }
   }());
 }
+=======
+var axios = require('../../../index');
+var http = require('http');
+var https = require('https');
+var net = require('net');
+var url = require('url');
+var zlib = require('zlib');
+var assert = require('assert');
+var fs = require('fs');
+var path = require('path');
+var pkg = require('./../../../package.json');
+var server, proxy;
+var AxiosError = require('../../../lib/core/AxiosError');
+var FormData = require('form-data');
+var formidable = require('formidable');
+var express = require('express');
+var multer = require('multer');
+var bodyParser = require('body-parser');
+const isBlobSupported = typeof Blob !== 'undefined';
+
+var noop = ()=> {};
+>>>>>>> upstream/main
 
 describe('supports http with nodejs', function () {
 
@@ -483,14 +506,25 @@ describe('supports http with nodejs', function () {
       server = await startHTTPServer((req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Content-Encoding', 'gzip');
+<<<<<<< HEAD
         res.end('invalid response');
       });
 
       await assert.rejects(async () => {
         await axios.get(LOCAL_SERVER_URL);
       })
+=======
+        res.end(zipped);
+      }).listen(4444, function () {
+        axios.get('http://localhost:4444/').then(function (res) {
+          assert.deepEqual(res.data, data);
+          done();
+        }).catch(done);
+      });
+>>>>>>> upstream/main
     });
 
+<<<<<<< HEAD
     it('should support disabling automatic decompression of response data', function(done) {
       var data = 'Test data';
 
@@ -510,6 +544,17 @@ describe('supports http with nodejs', function () {
           }).catch(done);
         });
       });
+=======
+  it('should support gunzip error handling', function (done) {
+    server = http.createServer(function (req, res) {
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Content-Encoding', 'gzip');
+      res.end('invalid response');
+    }).listen(4444, function () {
+      axios.get('http://localhost:4444/').catch(function (error) {
+        done();
+      }).catch(done);
+>>>>>>> upstream/main
     });
 
     describe('algorithms', ()=> {
@@ -546,6 +591,7 @@ describe('supports http with nodejs', function () {
 
             const {data} = await axios.get(LOCAL_SERVER_URL);
 
+<<<<<<< HEAD
             assert.strictEqual(data, responseBody);
           });
 
@@ -586,6 +632,13 @@ describe('supports http with nodejs', function () {
         });
       }
 
+=======
+        }).then(function(res) {
+          assert.equal(res.data.toString('base64'), zipped.toString('base64'));
+          done();
+        }).catch(done);
+      });
+>>>>>>> upstream/main
     });
   });
 
@@ -843,12 +896,16 @@ describe('supports http with nodejs', function () {
             done();
           });
         }).catch(done);
+<<<<<<< HEAD
       });
+=======
+>>>>>>> upstream/main
     });
 
     it('should pass errors for a failed stream', async function () {
       server = await startHTTPServer();
 
+<<<<<<< HEAD
       var notExitPath = path.join(__dirname, 'does_not_exist');
 
       try {
@@ -886,6 +943,19 @@ describe('supports http with nodejs', function () {
       } finally {
         assert.strictEqual(streamError && streamError.code, 'ERR_CANCELED');
       }
+=======
+    server = http.createServer(function (req, res) {
+      req.pipe(res);
+    }).listen(4444, function () {
+      axios.post('http://localhost:4444/',
+        fs.createReadStream(notExitPath)
+      ).then(function (res) {
+        assert.fail('expected ENOENT error');
+      }).catch(function (err) {
+        assert.equal(err.message, `ENOENT: no such file or directory, open \'${notExitPath}\'`);
+        done();
+      }).catch(done);
+>>>>>>> upstream/main
     });
   });
 
@@ -1575,6 +1645,7 @@ describe('supports http with nodejs', function () {
   });
 
   describe('FormData', function () {
+<<<<<<< HEAD
     describe('form-data instance (https://www.npmjs.com/package/form-data)', (done) => {
       it('should allow passing FormData', function (done) {
         var form = new FormDataLegacy();
@@ -1666,6 +1737,46 @@ describe('supports http with nodejs', function () {
           {size, mimetype, originalFilename},
           {mimetype: 'image/jpeg', originalFilename: 'blob', size: Buffer.from(blobContent).byteLength}
         );
+=======
+    it('should allow passing FormData', function (done) {
+      var form = new FormData();
+      var file1 = Buffer.from('foo', 'utf8');
+
+      form.append('foo', "bar");
+      form.append('file1', file1, {
+        filename: 'bar.jpg',
+        filepath: 'temp/bar.jpg',
+        contentType: 'image/jpeg'
+      });
+
+      server = http.createServer(function (req, res) {
+        var receivedForm = new formidable.IncomingForm();
+
+        receivedForm.parse(req, function (err, fields, files) {
+          if (err) {
+            return done(err);
+          }
+
+          res.end(JSON.stringify({
+            fields: fields,
+            files: files
+          }));
+        });
+      }).listen(4444, function () {
+        axios.post('http://localhost:4444/', form, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (res) {
+          assert.deepStrictEqual(res.data.fields, {foo: 'bar'});
+
+          assert.strictEqual(res.data.files.file1.mimetype, 'image/jpeg');
+          assert.strictEqual(res.data.files.file1.originalFilename, 'temp/bar.jpg');
+          assert.strictEqual(res.data.files.file1.size, 3);
+
+          done();
+        }).catch(done);
+>>>>>>> upstream/main
       });
     });
 
@@ -1708,6 +1819,7 @@ describe('supports http with nodejs', function () {
     });
   });
 
+<<<<<<< HEAD
   describe('Blob', function () {
     it('should support Blob', async () => {
       server = await startHTTPServer(async (req, res) => {
@@ -1726,6 +1838,8 @@ describe('supports http with nodejs', function () {
     });
   });
 
+=======
+>>>>>>> upstream/main
   describe('URLEncoded Form', function () {
     it('should post object data as url-encoded form if content-type is application/x-www-form-urlencoded', function (done) {
       var app = express();
@@ -1851,6 +1965,7 @@ describe('supports http with nodejs', function () {
       }).catch(done);
     });
   });
+<<<<<<< HEAD
 
   describe('progress', function () {
     describe('upload', function () {
@@ -2179,4 +2294,6 @@ describe('supports http with nodejs', function () {
       assert.strictEqual(data, payload);
     });
   });
+=======
+>>>>>>> upstream/main
 });

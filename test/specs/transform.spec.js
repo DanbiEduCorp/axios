@@ -179,7 +179,11 @@ describe('transform', function () {
   });
 
   it('should normalize \'content-type\' header when using a custom transformRequest', function (done) {
+<<<<<<< HEAD
     const data = {
+=======
+    var data = {
+>>>>>>> upstream/main
       foo: 'bar'
     };
 

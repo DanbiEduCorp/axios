@@ -18,12 +18,17 @@
 [![Build status](https://img.shields.io/github/actions/workflow/status/axios/axios/ci.yml?branch=v1.x&label=CI&logo=github&style=flat-square)](https://github.com/axios/axios/actions/workflows/ci.yml)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/axios/axios)
 [![code coverage](https://img.shields.io/coveralls/mzabriskie/axios.svg?style=flat-square)](https://coveralls.io/r/mzabriskie/axios)
+<<<<<<< HEAD
 [![install size](https://img.shields.io/badge/dynamic/json?url=https://packagephobia.com/v2/api.json?p=axios&query=$.install.pretty&label=install%20size&style=flat-square)](https://packagephobia.now.sh/result?p=axios)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/axios?style=flat-square)](https://bundlephobia.com/package/axios@latest)
+=======
+[![install size](https://packagephobia.now.sh/badge?p=axios)](https://packagephobia.now.sh/result?p=axios)
+>>>>>>> upstream/main
 [![npm downloads](https://img.shields.io/npm/dm/axios.svg?style=flat-square)](https://npm-stat.com/charts.html?package=axios)
 [![gitter chat](https://img.shields.io/gitter/room/mzabriskie/axios.svg?style=flat-square)](https://gitter.im/mzabriskie/axios)
 [![code helpers](https://www.codetriage.com/axios/axios/badges/users.svg)](https://www.codetriage.com/axios/axios)
 [![Known Vulnerabilities](https://snyk.io/test/npm/axios/badge.svg)](https://snyk.io/test/npm/axios)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/axios)
 
 
 
@@ -58,6 +63,7 @@
   - [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format)
     - [URLSearchParams](#urlsearchparams)
     - [Query string](#query-string-older-browsers)
+<<<<<<< HEAD
     - [🆕 Automatic serialization](#-automatic-serialization-to-urlsearchparams)
   - [Using multipart/form-data format](#using-multipartform-data-format)
     - [FormData](#formdata)
@@ -66,6 +72,14 @@
   - [HTML Form Posting](#-html-form-posting-browser)
   - [🆕 Progress capturing](#-progress-capturing)
   - [🆕 Rate limiting](#-progress-capturing)
+=======
+    - [🆕 Automatic serialization](#-automatic-serialization-to-urlsearchparams)        
+  - [Using multipart/form-data format](#using-multipartform-data-format)    
+    - [FormData](#formdata)
+    - [🆕 Automatic serialization](#-automatic-serialization-to-formdata) 
+  - [Files Posting](#files-posting)
+  - [HTML Form Posting](#html-form-posting-browser)
+>>>>>>> upstream/main
   - [Semver](#semver)
   - [Promises](#promises)
   - [TypeScript](#typescript)
@@ -81,7 +95,11 @@
 - Intercept request and response
 - Transform request and response data
 - Cancel requests
+<<<<<<< HEAD
 - Automatic transforms for [JSON](https://www.json.org/json-en.html) data
+=======
+- Automatic transforms for JSON data
+>>>>>>> upstream/main
 - 🆕 Automatic data object serialization to `multipart/form-data` and `x-www-form-urlencoded` body encodings
 - Client side support for protecting against [XSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
@@ -116,6 +134,15 @@ $ yarn add axios
 ```
 
 Using pnpm:
+<<<<<<< HEAD
+=======
+
+```bash
+$ pnpm add axios
+```
+
+Using jsDelivr CDN:
+>>>>>>> upstream/main
 
 ```bash
 $ pnpm add axios
@@ -388,6 +415,7 @@ These are the available config options for making requests. Only the `url` is re
   // `paramsSerializer` is an optional config that allows you to customize serializing `params`. 
   paramsSerializer: {
 
+<<<<<<< HEAD
     //Custom encoder function which sends key/value pairs in an iterative fashion.
     encode?: (param: string): string => { /* Do custom operations here and return transformed string */ }, 
     
@@ -396,6 +424,11 @@ These are the available config options for making requests. Only the `url` is re
     
     //Configuration for formatting array indexes in the params. 
     indexes: false // Three available options: (1) indexes: null (leads to no brackets), (2) (default) indexes: false (leads to empty brackets), (3) indexes: true (leads to brackets with indexes).    
+=======
+  // `paramsSerializer` is an optional config in charge of serializing `params`
+  paramsSerializer: {
+    indexes: null // array indexes format (null - no brackets, false - empty brackets, true - brackets with indexes)
+>>>>>>> upstream/main
   },
 
   // `data` is the data to be sent as the request body
@@ -572,6 +605,7 @@ These are the available config options for making requests. Only the `url` is re
   },
 
   formSerializer: {
+<<<<<<< HEAD
       visitor: (value, key, path, helpers) => {}; // custom visitor function to serialize form values
       dots: boolean; // use dots instead of brackets format
       metaTokens: boolean; // keep special endings like {} in parameter key
@@ -583,6 +617,13 @@ These are the available config options for making requests. Only the `url` is re
     100 * 1024, // 100KB/s upload limit,
     100 * 1024  // 100KB/s download limit
   ]
+=======
+      visitor: (value, key, path, helpers)=> {}; // custom visitor funaction to serrialize form values
+      dots: boolean; // use dots instead of brackets format
+      metaTokens: boolean; // keep special endings like {} in parameter key 
+      indexes: boolean; // array indexes format null - no brackets, false - empty brackets, true - brackets with indexes
+  }
+>>>>>>> upstream/main
 }
 ```
 
@@ -661,7 +702,11 @@ instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 ### Config order of precedence
 
+<<<<<<< HEAD
 Config will be merged with an order of precedence. The order is library defaults found in [lib/defaults.js](https://github.com/axios/axios/blob/master/lib/defaults/index.js#L28), then `defaults` property of the instance, and finally `config` argument for the request. The latter will take precedence over the former. Here's an example.
+=======
+Config will be merged with an order of precedence. The order is library defaults found in [lib/defaults.js](https://github.com/axios/axios/blob/main/lib/defaults/index.js#L28), then `defaults` property of the instance, and finally `config` argument for the request. The latter will take precedence over the former. Here's an example.
+>>>>>>> upstream/main
 
 ```js
 // Create an instance using the config defaults provided by the library
@@ -848,6 +893,27 @@ axios.get('/user/12345')
 ## Cancellation
 
 ### AbortController
+<<<<<<< HEAD
+=======
+
+Starting from `v0.22.0` Axios supports AbortController to cancel requests in fetch API way:
+
+```js
+const controller = new AbortController();
+
+axios.get('/foo/bar', {
+   signal: controller.signal
+}).then(function(response) {
+   //...
+});
+// cancel the request
+controller.abort()
+```
+
+### CancelToken `👎deprecated`
+
+You can also cancel a request using a *CancelToken*.
+>>>>>>> upstream/main
 
 Starting from `v0.22.0` Axios supports AbortController to cancel requests in fetch API way:
 
@@ -868,6 +934,8 @@ controller.abort()
 You can also cancel a request using a *CancelToken*.
 
 > The axios cancel token API is based on the withdrawn [cancellable promises proposal](https://github.com/tc39/proposal-cancelable-promises).
+
+> This API is deprecated since v0.22.0 and shouldn't be used in new projects
 
 > This API is deprecated since v0.22.0 and shouldn't be used in new projects
 
@@ -914,7 +982,11 @@ axios.get('/user/12345', {
 cancel();
 ```
 
+<<<<<<< HEAD
 > **Note:** you can cancel several requests with the same cancel token/abort controller.
+=======
+> Note: you can cancel several requests with the same cancel token/abort controller.
+>>>>>>> upstream/main
 > If a cancellation token is already cancelled at the moment of starting an Axios request, then the request is cancelled immediately, without any attempts to make a real request.
 
 > During the transition period, you can use both cancellation APIs, even for the same request:
@@ -923,7 +995,11 @@ cancel();
 
 ### URLSearchParams
 
+<<<<<<< HEAD
 By default, axios serializes JavaScript objects to `JSON`. To send data in the [`application/x-www-form-urlencoded` format](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) instead, you can use the [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API, which is [supported](http://www.caniuse.com/#feat=urlsearchparams) in the vast majority of browsers,and [ Node](https://nodejs.org/api/url.html#url_class_urlsearchparams) starting with v10 (released in 2018).
+=======
+By default, axios serializes JavaScript objects to `JSON`. To send data in the [`application/x-www-form-urlencoded` format](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) instead, you can use the [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) API, which is [supported](http://www.caniuse.com/#feat=urlsearchparams) in the vast majority of browsers, [and Node](https://nodejs.org/api/url.html#url_class_urlsearchparams) starting with v10 (released in 2018).
+>>>>>>> upstream/main
 
 ```js
 const params = new URLSearchParams({ foo: 'bar' });
@@ -963,6 +1039,7 @@ For older Node.js engines, you can use the [`querystring`](https://nodejs.org/ap
 ```js
 const querystring = require('querystring');
 axios.post('https://something.com/', querystring.stringify({ foo: 'bar' }));
+<<<<<<< HEAD
 ```
 
 You can also use the [`qs`](https://github.com/ljharb/qs) library.
@@ -1031,7 +1108,78 @@ formData.append('foo', 'bar');
 
 axios.post('https://httpbin.org/post', formData);
 ```
+=======
+```
 
+You can also use the [`qs`](https://github.com/ljharb/qs) library.
+
+> NOTE: 
+> The `qs` library is preferable if you need to stringify nested objects, as the `querystring` method has [known issues](https://github.com/nodejs/node-v0.x-archive/issues/1665) with that use case.
+
+### 🆕 Automatic serialization to URLSearchParams
+
+Axios will automatically serialize the data object to urlencoded format if the content-type header is set to "application/x-www-form-urlencoded".
+
+```
+const data = {
+  x: 1,
+  arr: [1, 2, 3],
+  arr2: [1, [2], 3],
+  users: [{name: 'Peter', surname: 'Griffin'}, {name: 'Thomas', surname: 'Anderson'}],
+};
+
+await axios.postForm('https://postman-echo.com/post', data,
+  {headers: {'content-type': 'application/x-www-form-urlencoded'}}
+);
+```
+
+The server will handle it as 
+
+```js
+  {
+    x: '1',
+    'arr[]': [ '1', '2', '3' ],
+    'arr2[0]': '1',
+    'arr2[1][0]': '2',
+    'arr2[2]': '3',
+    'arr3[]': [ '1', '2', '3' ],
+    'users[0][name]': 'Peter',
+    'users[0][surname]': 'griffin',
+    'users[1][name]': 'Thomas',
+    'users[1][surname]': 'Anderson'
+  }
+````
+
+If your backend body-parser (like `body-parser` of `express.js`) supports nested objects decoding, you will get the same object on the server-side automatically
+
+```js
+  var app = express();
+  
+  app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+  
+  app.post('/', function (req, res, next) {
+     // echo body as JSON
+     res.send(JSON.stringify(req.body));
+  });
+
+  server = app.listen(3000);
+```
+
+## Using `multipart/form-data` format
+
+### FormData
+
+To send the data as a `multipart/formdata` you need to pass a formData instance as a payload. 
+Setting the `Content-Type` header is not required as Axios guesses it based on the payload type.
+
+```js
+const formData = new FormData();
+formData.append('foo', 'bar');
+>>>>>>> upstream/main
+
+axios.post('https://httpbin.org/post', formData);
+```
+  
 In node.js, you can use the [`form-data`](https://github.com/form-data/form-data) library as follows:
 
 ```js
@@ -1047,7 +1195,11 @@ axios.post('https://example.com', form)
 
 ### 🆕 Automatic serialization to FormData
 
+<<<<<<< HEAD
 Starting from `v0.27.0`, Axios supports automatic object serialization to a FormData object if the request `Content-Type`
+=======
+Starting from `v0.27.0`, Axios supports automatic object serialization to a FormData object if the request `Content-Type` 
+>>>>>>> upstream/main
 header is set to `multipart/form-data`.
 
 The following request will submit the data in a FormData format (Browser & Node.js):
@@ -1059,7 +1211,11 @@ axios.post('https://httpbin.org/post', {x: 1}, {
   headers: {
     'Content-Type': 'multipart/form-data'
   }
+<<<<<<< HEAD
 }).then(({data}) => console.log(data));
+=======
+}).then(({data})=> console.log(data));
+>>>>>>> upstream/main
 ```
 
 In the `node.js` build, the ([`form-data`](https://github.com/form-data/form-data)) polyfill is used by default.
@@ -1068,22 +1224,37 @@ You can overload the FormData class by setting the `env.FormData` config variabl
 but you probably won't need it in most cases:
 
 ```js
+<<<<<<< HEAD
 const axios = require('axios');
+=======
+const axios= require('axios');
+>>>>>>> upstream/main
 var FormData = require('form-data');
 
 axios.post('https://httpbin.org/post', {x: 1, buf: new Buffer(10)}, {
   headers: {
     'Content-Type': 'multipart/form-data'
   }
+<<<<<<< HEAD
 }).then(({data}) => console.log(data));
+=======
+}).then(({data})=> console.log(data));
+>>>>>>> upstream/main
 ```
 
 Axios FormData serializer supports some special endings to perform the following operations:
 
 - `{}` - serialize the value with JSON.stringify
+<<<<<<< HEAD
 - `[]` - unwrap the array-like object as separate fields with the same key
 
 > **Note**: unwrap/expand operation will be used by default on arrays and FileList objects
+=======
+- `[]` - unwrap the array-like object as separate fields with the same key 
+
+> NOTE: 
+> unwrap/expand operation will be used by default on arrays and FileList objects
+>>>>>>> upstream/main
 
 FormData serializer supports additional options via `config.formSerializer: object` property to handle rare cases:
 
@@ -1092,15 +1263,26 @@ to a `FormData` object by following custom rules.
 
 - `dots: boolean = false` - use dot notation instead of brackets to serialize arrays and objects;
 
+<<<<<<< HEAD
 - `metaTokens: boolean = true` - add the special ending (e.g `user{}: '{"name": "John"}'`) in the FormData key.
+=======
+- `metaTokens: boolean = true` - add the special ending (e.g `user{}: '{"name": "John"}'`) in the FormData key. 
+>>>>>>> upstream/main
 The back-end body-parser could potentially use this meta-information to automatically parse the value as JSON.
 
 - `indexes: null|false|true = false` - controls how indexes will be added to unwrapped keys of `flat` array-like objects
 
+<<<<<<< HEAD
     - `null` - don't add brackets (`arr: 1`, `arr: 2`, `arr: 3`)
     - `false`(default) - add empty brackets (`arr[]: 1`, `arr[]: 2`, `arr[]: 3`)
     - `true` - add brackets with indexes  (`arr[0]: 1`, `arr[1]: 2`, `arr[2]: 3`)
 
+=======
+    - `null` - don't add brackets (`arr: 1`, `arr: 2`, `arr: 3`) 
+    - `false`(default) - add empty brackets (`arr[]: 1`, `arr[]: 2`, `arr[]: 3`)
+    - `true` - add brackets with indexes  (`arr[0]: 1`, `arr[1]: 2`, `arr[2]: 3`)
+    
+>>>>>>> upstream/main
 Let's say we have an object like this one:
 
 ```js
@@ -1116,7 +1298,11 @@ const obj = {
 The following steps will be executed by the Axios serializer internally:
 
 ```js
+<<<<<<< HEAD
 const formData = new FormData();
+=======
+const formData= new FormData();
+>>>>>>> upstream/main
 formData.append('x', '1');
 formData.append('arr[]', '1');
 formData.append('arr[]', '2');
@@ -1136,11 +1322,16 @@ which are just the corresponding http methods with the `Content-Type` header pre
 
 ## Files Posting
 
+<<<<<<< HEAD
 You can easily submit a single file:
+=======
+You can easily sumbit a single file
+>>>>>>> upstream/main
 
 ```js
 await axios.postForm('https://httpbin.org/post', {
   'myVar' : 'foo',
+<<<<<<< HEAD
   'file': document.querySelector('#fileInput').files[0]
 });
 ```
@@ -1288,8 +1479,87 @@ const {data} = await axios.post(LOCAL_SERVER_URL, myBuffer, {
   },
    
   maxRate: [100 * 1024], // 100KB/s limit
+=======
+  'file': document.querySelector('#fileInput').files[0] 
+>>>>>>> upstream/main
 });
 ```
+
+or multiple files as `multipart/form-data`.
+
+```js
+await axios.postForm('https://httpbin.org/post', {
+  'files[]': document.querySelector('#fileInput').files 
+});
+```
+
+`FileList` object can be passed directly:
+
+```js
+await axios.postForm('https://httpbin.org/post', document.querySelector('#fileInput').files)
+```
+
+All files will be sent with the same field names: `files[]`.
+
+## 🆕 HTML Form Posting (browser)
+
+Pass HTML Form element as a payload to submit it as `multipart/form-data` content.
+
+```js
+await axios.postForm('https://httpbin.org/post', document.querySelector('#htmlForm'));
+```
+
+`FormData` and `HTMLForm` objects can also be posted as `JSON` by explicitly setting the `Content-Type` header to `application/json`:
+
+```js
+await axios.post('https://httpbin.org/post', document.querySelector('#htmlForm'), {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+```
+
+For example, the Form
+
+```html
+<form id="form">
+  <input type="text" name="foo" value="1">
+  <input type="text" name="deep.prop" value="2">
+  <input type="text" name="deep prop spaced" value="3">
+  <input type="text" name="baz" value="4">
+  <input type="text" name="baz" value="5">
+
+  <select name="user.age">
+    <option value="value1">Value 1</option>
+    <option value="value2" selected>Value 2</option>
+    <option value="value3">Value 3</option>
+  </select>
+
+  <input type="submit" value="Save">
+</form>
+```
+
+will be submitted as the following JSON object:
+
+```js
+{
+  "foo": "1",
+  "deep": {
+    "prop": {
+      "spaced": "3"
+    }
+  },
+  "baz": [
+    "4",
+    "5"
+  ],
+  "user": {
+    "age": "value2"
+  }
+}
+````
+
+Sending `Blobs`/`Files` as JSON (`base64`) is not currently supported.
 
 ## Semver
 
@@ -1333,10 +1603,18 @@ You can use Gitpod, an online IDE(which is free for Open Source) for contributin
 
 ## Resources
 
+<<<<<<< HEAD
 * [Changelog](https://github.com/axios/axios/blob/v1.x/CHANGELOG.md)
 * [Ecosystem](https://github.com/axios/axios/blob/v1.x/ECOSYSTEM.md)
 * [Contributing Guide](https://github.com/axios/axios/blob/v1.x/CONTRIBUTING.md)
 * [Code of Conduct](https://github.com/axios/axios/blob/v1.x/CODE_OF_CONDUCT.md)
+=======
+* [Changelog](https://github.com/axios/axios/blob/main/CHANGELOG.md)
+* [Upgrade Guide](https://github.com/axios/axios/blob/main/UPGRADE_GUIDE.md)
+* [Ecosystem](https://github.com/axios/axios/blob/main/ECOSYSTEM.md)
+* [Contributing Guide](https://github.com/axios/axios/blob/main/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/axios/axios/blob/main/CODE_OF_CONDUCT.md)
+>>>>>>> upstream/main
 
 ## Credits
 

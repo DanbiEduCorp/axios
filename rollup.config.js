@@ -2,14 +2,18 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import {terser} from "rollup-plugin-terser";
 import json from '@rollup/plugin-json';
+<<<<<<< HEAD
 import { babel } from '@rollup/plugin-babel';
 import autoExternal from 'rollup-plugin-auto-external';
 import bundleSize from 'rollup-plugin-bundle-size'
 import path from 'path';
+=======
+>>>>>>> upstream/main
 
 const lib = require("./package.json");
 const outputFileName = 'axios';
 const name = "axios";
+<<<<<<< HEAD
 const namedInput = './index.js';
 const defaultInput = './lib/axios.js';
 
@@ -38,10 +42,29 @@ const buildConfig = ({es5, browser = true, minifiedVersion = true, ...config}) =
         babelHelpers: 'bundled',
         presets: ['@babel/preset-env']
       })] : []),
+=======
+const input = './lib/axios.js';
+
+const buildConfig = (config) => {
+
+  const build = ({minified}) => ({
+    input,
+    ...config,
+    output: {
+      ...config.output,
+      file: `${config.output.file}.${minified ? "min.js" : "js"}`
+    },
+    plugins: [
+      json(),
+      resolve({browser: true}),
+      commonjs(),
+      minified && terser(),
+>>>>>>> upstream/main
       ...(config.plugins || []),
     ]
   });
 
+<<<<<<< HEAD
   const configs = [
     build({minified: false}),
   ];
@@ -51,10 +74,17 @@ const buildConfig = ({es5, browser = true, minifiedVersion = true, ...config}) =
   }
 
   return configs;
+=======
+  return [
+    build({minified: false}),
+    build({minified: true}),
+  ];
+>>>>>>> upstream/main
 };
 
 export default async () => {
   const year = new Date().getFullYear();
+<<<<<<< HEAD
   const banner = `// Axios v${lib.version} Copyright (c) ${year} ${lib.author} and contributors`;
 
   return [
@@ -76,6 +106,14 @@ export default async () => {
       es5: true,
       output: {
         file: `dist/${outputFileName}.js`,
+=======
+  const banner = `// ${lib.name} v${lib.version} Copyright (c) ${year} ${lib.author}`;
+
+  return [
+    ...buildConfig({
+      output: {
+        file: `dist/${outputFileName}`,
+>>>>>>> upstream/main
         name,
         format: "umd",
         exports: "default",
@@ -83,6 +121,7 @@ export default async () => {
       }
     }),
 
+<<<<<<< HEAD
     // Browser CJS bundle
     ...buildConfig({
       input: defaultInput,
@@ -113,5 +152,16 @@ export default async () => {
         commonjs()
       ]
     }
+=======
+    ...buildConfig({
+      output: {
+        file: `dist/esm/${outputFileName}`,
+        format: "esm",
+        preferConst: true,
+        exports: "named",
+        banner
+      }
+    })
+>>>>>>> upstream/main
   ]
 };

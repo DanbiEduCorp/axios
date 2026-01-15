@@ -2,9 +2,15 @@ import AxiosError from '../../../lib/core/AxiosError';
 
 describe('core::AxiosError', function() {
   it('should create an Error with message, config, code, request, response, stack and isAxiosError', function() {
+<<<<<<< HEAD
     const request = { path: '/foo' };
     const response = { status: 200, data: { foo: 'bar' } };
     const error = new AxiosError('Boom!', 'ESOMETHING', { foo: 'bar' }, request, response);
+=======
+    var request = { path: '/foo' };
+    var response = { status: 200, data: { foo: 'bar' } };
+    var error = new AxiosError('Boom!', 'ESOMETHING', { foo: 'bar' }, request, response);
+>>>>>>> upstream/main
     expect(error instanceof Error).toBe(true);
     expect(error.message).toBe('Boom!');
     expect(error.config).toEqual({ foo: 'bar' });
