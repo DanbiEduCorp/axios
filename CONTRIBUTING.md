@@ -1,50 +1,59 @@
 # Contributing
 
-We are open to, and grateful for, any contributions made by the community. By contributing to axios, you agree to abide by the [code of conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md).
+We accept community contributions. By contributing to axios, you agree to follow the [code of conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md).
 
-## Code Style
+Before submitting a PR for review, complete the [mandatory submission requirements in AGENTS.md](AGENTS.md#before-opening-or-updating-a-pull-request) and the [PR template](.github/PULL_REQUEST_TEMPLATE.md). These requirements apply to human and AI contributors. Every PR must add or update `PRE_RELEASE_CHANGELOG.md`, including documentation-only and test-only changes, except for the narrow [automated release-preparation exception](AGENTS.md#pre-release-notes). Use the Maintenance section for test-only changes, internal refactors, tooling, dependency updates, and CI changes without a user-visible behavior change.
 
-Please follow the [node style guide](https://github.com/felixge/node-style-guide).
+## Code style
 
-## Commit Messages
+Follow the [node style guide](https://github.com/felixge/node-style-guide).
 
-Please follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+## Commit messages
+
+Follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Testing
 
-Please update the tests to reflect your code changes. Pull requests will not be accepted if they are failing on GitHub actions.
+Update tests for your changes. Pull requests must pass GitHub Actions.
 
 ## Documentation
 
-Please update the [docs](README.md) accordingly so that there are no discrepancies between the API and the documentation.
+Keep the API and documentation in sync. For unreleased runtime/API changes, record the required documentation updates in `PRE_RELEASE_DOCS.md` so they can be applied during release preparation. Follow the [prerelease notes rules](AGENTS.md#pre-release-notes); `CHANGELOG.md` is reserved for release preparation.
+
+## Dependency and GitHub Actions updates
+
+Please do not open pull requests that only update npm packages, lockfiles, or GitHub Actions versions. We close these PRs from outside collaborators. Only maintainers and approved automated bots may create package and GitHub Actions update PRs.
+
+We keep the 7-day Dependabot delay for these updates unless a critical vulnerability requires a maintainer-led manual update.
 
 ## Developing
 
-- `grunt test` run the jasmine and mocha tests
-- `grunt build` run webpack and bundle the source
-- `grunt version` prepare the code for release
+- `npm run lint` checks the library source
+- `npm test` runs the unit and browser test suites; install the browsers first with `npx playwright install`
+- `npm run test:vitest:unit` runs the Node unit tests
+- `npm run test:vitest:browser:headless` runs the Chromium, Firefox, and WebKit browser tests; install the browsers first with `npx playwright install` (`npx playwright install --with-deps` also installs system dependencies on supported Linux hosts)
+- `npm run build` runs Rollup and bundles the source
+- `npm run version` prepares the code for release
 
-Please don't include changes to `dist/` in your pull request. This should only be updated when releasing a new version.
+## Running examples
 
-## Running Examples
+Use the examples for manual testing.
 
-Examples are included in part to allow manual testing.
-
-Running example
+Run the examples:
 
 ```bash
 > npm run examples
 # Open 127.0.0.1:3000
 ```
 
-Running sandbox in browser
+Run the browser sandbox:
 
 ```bash
 > npm start
 # Open 127.0.0.1:3000
 ```
 
-Running sandbox in terminal
+Run the terminal sandbox:
 
 ```bash
 > npm start
