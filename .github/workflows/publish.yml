@@ -1,55 +1,40 @@
-name: Publish
+name: Publish package to GitHub Packages
+
+# DanbiEduCorp fork: publishes @DanbiEduCorp/axios to GitHub Packages instead of npmjs.
+# Manual trigger only: upstream `v1.*.*` tags share names with ours and would run upstream's npmjs workflow.
 on:
-  pull_request:
-    types:
-      - closed
-    branches:
-      - main
-      - 'v**'
   workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   publish:
-    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && github.event.pull_request.head.label == 'axios:release')
     runs-on: ubuntu-latest
     steps:
-      - name: "Release PR info"
-        if: github.event_name != 'workflow_dispatch'
-        run: echo "PR ${{ github.event.number }}"
-      - uses: actions/checkout@v3
-      - name: git config
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-      - uses: actions/setup-node@v3
+      - name: Checkout repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@main
-      - name: Extract release notes
-        id: extract-release-notes
-        uses: ffurrer2/extract-release-notes@v1
-      - name: Check versions
-        run: node ./bin/check-build-version.js
-      ############# TAG RELEASE ##############
-      - name: "Push tag v${{ steps.package-version.outputs.current-version }}"
-        uses: rickstaa/action-create-tag@v1
-        id: tag_version
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          tag: "v${{ steps.package-version.outputs.current-version }}"
-      ############# GITHUB RELEASE ##############
-      - name: "Create a GitHub release v${{ steps.package-version.outputs.current-version }}"
-        uses: ncipollo/release-action@v1
-        with:
-          tag: "v${{ steps.package-version.outputs.current-version }}"
-          name: "Release v${{ steps.package-version.outputs.current-version }}"
-          body: |
-            ## Release notes:
-            ${{ steps.extract-release-notes.outputs.release_notes }}
-      ############# NPM RELEASE ##############
-      - name: Publish the release to NPM
+          node-version: 26.x
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@DanbiEduCorp'
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      # dist/ is not committed since 1.x upstream moved it to .gitignore, so it must be built here.
+      - name: Build project
+        run: npm run build
+
+      # npm provenance and `npm stage publish` are npmjs-only features and are not supported by GitHub Packages.
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
